@@ -10,7 +10,7 @@ import scala.util.Using
 import objektwerks.FileLineCountTask
 import objektwerks.FileLineCountTask.*
 
-class VirtualThreadsTest extends AnyFunSuite:
+final class VirtualThreadsTest extends AnyFunSuite:
   test("submit") {
     Using( Executors.newVirtualThreadPerTaskExecutor() ) { executor =>
       val aFuture = executor.submit( () => FileLineCountTask("./data/data.a.csv").call() )
