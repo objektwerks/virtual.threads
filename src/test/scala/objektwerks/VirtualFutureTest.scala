@@ -13,6 +13,13 @@ import FileLineCountTask.*
 final class VirtualFutureTest extends AsyncFunSuite with Matchers:
   implicit override val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
+  test("sequence") {
+    for
+      aLines <- Future { FileLineCountTask("./data/data.a.csv").call() }
+      bLines <- Future { FileLineCountTask("./data/data.b.csv").call() }
+    yield aLines + bLines shouldBe expectedLineCount
+  }
+
   test("parallel") {
     val aFuture = Future { FileLineCountTask("./data/data.a.csv").call() }
     val bFuture = Future { FileLineCountTask("./data/data.b.csv").call() }
