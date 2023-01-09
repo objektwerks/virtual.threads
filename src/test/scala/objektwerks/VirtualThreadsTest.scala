@@ -8,11 +8,9 @@ import scala.jdk.CollectionConverters.*
 import scala.util.Using
 
 import objektwerks.FileLineCountTask
+import objektwerks.FileLineCountTask.*
 
 class VirtualThreadsTest extends AnyFunSuite:
-  val tasks = List( FileLineCountTask("./data/data.a.csv"), FileLineCountTask("./data/data.b.csv") )
-  val expectedLineCount = 540_959
-
   test("submit") {
     Using( Executors.newVirtualThreadPerTaskExecutor() ) { executor =>
       val aFuture = executor.submit( () => FileLineCountTask("./data/data.a.csv").call() )
