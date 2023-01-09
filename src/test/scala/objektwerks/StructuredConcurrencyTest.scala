@@ -11,6 +11,7 @@ import scala.jdk.CollectionConverters.*
 import scala.util.{Failure, Success, Try, Using}
 
 import objektwerks.FileLineCountTask
+
 class StructuredConcurrencyTest extends AnyFunSuite:
   val tasks = List( FileLineCountTask("./data/data.a.csv"), FileLineCountTask("./data/data.b.csv") )
   val expectedLineCount = 540_959
