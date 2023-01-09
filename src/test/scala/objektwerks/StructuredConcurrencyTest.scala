@@ -9,11 +9,9 @@ import scala.jdk.CollectionConverters.*
 import scala.util.{Failure, Success, Using}
 
 import objektwerks.FileLineCountTask
+import objektwerks.FileLineCountTask.*
 
 class StructuredConcurrencyTest extends AnyFunSuite:
-  val tasks = List( FileLineCountTask("./data/data.a.csv"), FileLineCountTask("./data/data.b.csv") )
-  val expectedLineCount = 540_959
-
   test("join") {
     val lines = Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
       val alines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
