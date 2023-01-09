@@ -7,7 +7,6 @@ import org.scalatest.funsuite.AnyFunSuite
 import scala.jdk.CollectionConverters.*
 import scala.util.Using
 
-import objektwerks.FileLineCountTask
 import objektwerks.FileLineCountTask.*
 
 final class VirtualThreadsTest extends AnyFunSuite:
