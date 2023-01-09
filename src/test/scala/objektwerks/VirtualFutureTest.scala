@@ -3,12 +3,21 @@ package objektwerks
 import java.util.concurrent.Executors
 
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.ExecutionContext
+import scala.concurrent.Future
 
-final class VirtualFutureTest extends AnyFunSuite:
+import FileLineCountTask.*
+
+final class VirtualFutureTest extends AnyFunSuite with Matchers:
   implicit val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
-  test("future") {
-
+  test("parallel") {
+    val aFuture = Future { FileLineCountTask("./data/data.a.csv").call() }
+    val bFuture = Future { FileLineCountTask("./data/data.b.csv").call() }
+    for
+      aLines <- aFuture
+      bLines <- bFuture
+    yield aLines + bLines shouldBe expectedLineCount
   }
