@@ -14,7 +14,7 @@ class StructuredConcurrencyTest extends AnyFunSuite:
   val tasks = List( FileLineCountTask("./data/data.a.csv"), FileLineCountTask("./data/data.b.csv") )
   val expectedLineCount = 540_959
 
-  test("structured concurrency join") {
+  test("join") {
     val lines = Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
       val alines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
       val blines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
@@ -27,7 +27,7 @@ class StructuredConcurrencyTest extends AnyFunSuite:
       case Failure(error) => fail(error.getMessage)
   }
 
-  test("structured concurrency join until") {
+  test("join until") {
     Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
       val futures = tasks.map( task => scope.fork( () => task.call() ) )
       scope.joinUntil( Instant.now().plusMillis(3000) )
