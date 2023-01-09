@@ -10,5 +10,5 @@ class FileLineCountTask(file: String) extends Callable[Int]:
     Using(
       Source.fromFile(file, Codec.UTF8.name)
     ) { source =>
-      source.getLines().length
+      source.getLines.length
     }.get
