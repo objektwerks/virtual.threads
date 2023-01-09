@@ -16,3 +16,4 @@ Resources
 1. [Virtual Threads](openjdk.org/jeps/425)
 2. [Structured Concurrency](openjdk.org/jeps/428)
 3. [Loom](www.marcobehler.com/guides/java-project-loom)
+4. [Http Server](https://github.com/objektwerks/http.server)
