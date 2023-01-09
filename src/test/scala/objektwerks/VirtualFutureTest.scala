@@ -21,3 +21,9 @@ final class VirtualFutureTest extends AnyFunSuite with Matchers:
       bLines <- bFuture
     yield aLines + bLines shouldBe expectedLineCount
   }
+
+  test("zip") {
+    Future { FileLineCountTask("./data/data.a.csv").call() } zip
+    Future { FileLineCountTask("./data/data.b.csv").call() } map
+    { (aLines, bLines) => aLines + bLines shouldBe expectedLineCount }
+  }
