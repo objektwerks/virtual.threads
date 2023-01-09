@@ -11,7 +11,7 @@ import scala.util.{Failure, Success, Using}
 import objektwerks.FileLineCountTask
 import objektwerks.FileLineCountTask.*
 
-class StructuredConcurrencyTest extends AnyFunSuite:
+final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join") {
     val lines = Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
       val alines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
