@@ -25,7 +25,7 @@ class StructuredConcurrencyTest extends AnyFunSuite:
     }
     lines match
       case Success(count) => assert(count == expectedLineCount)
-      case Failure(error) => fail(error.getMessage())
+      case Failure(error) => fail(error.getMessage)
   }
 
   test("structured concurrency join until") {
@@ -34,7 +34,7 @@ class StructuredConcurrencyTest extends AnyFunSuite:
       scope.joinUntil( Instant.now().plusMillis(3000) )
       scope.throwIfFailed()
       futures.map( future => future.resultNow() ).sum
-    }.fold( error => fail(error.getMessage()), lines => assert(lines == expectedLineCount) )
+    }.fold( error => fail(error.getMessage), lines => assert(lines == expectedLineCount) )
   }
 
   test("structured concurrency race") {
@@ -42,5 +42,5 @@ class StructuredConcurrencyTest extends AnyFunSuite:
       tasks.foreach( task => scope.fork( () => task.call() ) )
       scope.joinUntil( Instant.now().plusMillis(3000) )
       scope.result()
-    }.fold( error => fail(error.getMessage()), lines => assert(lines == 270_562 || lines == 270_397) )
+    }.fold( error => fail(error.getMessage), lines => assert(lines == 270_562 || lines == 270_397) )
   }
