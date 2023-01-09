@@ -27,3 +27,10 @@ final class VirtualFutureTest extends AsyncFunSuite with Matchers:
     Future { FileLineCountTask("./data/data.b.csv").call() } map
     { (aLines, bLines) => aLines + bLines shouldBe expectedLineCount }
   }
+
+  test("zip > map > recover") {
+    Future { FileLineCountTask("./data/data.a.csv").call() } zip
+    Future { FileLineCountTask("./data/data.c.csv").call() } map
+    { (aLines, bLines) => aLines + bLines shouldBe expectedLineCount } recover
+    { case _ => 0  } map { result => result shouldBe 0 }
+  }
