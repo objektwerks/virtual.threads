@@ -1,14 +1,12 @@
 package objektwerks
 
 import java.time.Instant
-import java.util.concurrent.{Callable, Executors, Future}
 import jdk.incubator.concurrent.StructuredTaskScope
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scala.annotation.tailrec
 import scala.jdk.CollectionConverters.*
-import scala.util.{Failure, Success, Try, Using}
+import scala.util.{Failure, Success, Using}
 
 import objektwerks.FileLineCountTask
 
