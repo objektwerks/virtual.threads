@@ -34,7 +34,7 @@ class StructuredConcurrencyTest extends AnyFunSuite:
     }.fold( error => fail(error.getMessage), lines => assert(lines == expectedLineCount) )
   }
 
-  test("structured concurrency race") {
+  test("race") {
     Using( StructuredTaskScope.ShutdownOnSuccess[Int]() ) { scope =>
       tasks.foreach( task => scope.fork( () => task.call() ) )
       scope.joinUntil( Instant.now().plusMillis(3000) )
