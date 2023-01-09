@@ -14,11 +14,11 @@ import objektwerks.FileLineCountTask.*
 final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join") {
     val lines = Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
-      val alines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
-      val blines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
+      val aLines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
+      val bLines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
       scope.join()
       scope.throwIfFailed()
-      alines.resultNow() + blines.resultNow()
+      aLines.resultNow() + bLines.resultNow()
     }
     lines match
       case Success(count) => assert(count == expectedLineCount)
