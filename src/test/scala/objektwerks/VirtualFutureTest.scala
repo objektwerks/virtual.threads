@@ -2,7 +2,7 @@ package objektwerks
 
 import java.util.concurrent.Executors
 
-import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.funsuite.AsyncFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.ExecutionContext
@@ -10,8 +10,8 @@ import scala.concurrent.Future
 
 import FileLineCountTask.*
 
-final class VirtualFutureTest extends AnyFunSuite with Matchers:
-  implicit val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
+final class VirtualFutureTest extends AsyncFunSuite with Matchers:
+  implicit override val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
   test("parallel") {
     val aFuture = Future { FileLineCountTask("./data/data.a.csv").call() }
