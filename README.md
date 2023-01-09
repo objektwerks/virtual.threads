@@ -2,8 +2,8 @@ Virtual Threads
 ---------------
 >JDK 19 virtual threads and structured concurrency feature tests.
 
-JDK
----
+JDK 19
+------
 >To enable preview features and load modules see .jvmopts, configured
 >as: ```"--enable-preview --add-modules jdk.incubator.concurrent"```
 
