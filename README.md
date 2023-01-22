@@ -1,6 +1,6 @@
 Virtual Threads
 ---------------
->JDK 19 virtual threads and structured concurrency feature tests.
+>JDK 19 virtual threads and structured concurrency feature tests using Scala 3.
 
 JDK 19
 ------
