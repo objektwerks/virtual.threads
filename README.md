@@ -17,3 +17,4 @@ Resources
 2. [Structured Concurrency: JEPS 428](openjdk.org/jeps/428)
 3. [Loom](www.marcobehler.com/guides/java-project-loom)
 4. [Http Server](https://github.com/objektwerks/http.server)
+4. [Ultimate Guide to Virtual Threads](https://blog.rockthejvm.com/ultimate-guide-to-java-virtual-threads/)
