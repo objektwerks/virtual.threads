@@ -1,8 +1,8 @@
 Virtual Threads
 ---------------
->JDK 19 virtual threads and structured concurrency feature tests using Scala 3.
+>JDK 20 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
 
-JDK 19
+JDK 20
 ------
 >To enable preview features and load modules see .jvmopts, configured
 >as: ```"--enable-preview --add-modules jdk.incubator.concurrent"```
