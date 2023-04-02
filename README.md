@@ -19,3 +19,4 @@ Resources
 4. [Loom](www.marcobehler.com/guides/java-project-loom)
 5. [Http Server](https://github.com/objektwerks/http.server)
 6. [Ultimate Guide to Virtual Threads](https://blog.rockthejvm.com/ultimate-guide-to-java-virtual-threads/)
+7. [Software Mill Ox](https://softwaremill.com/prototype-loom-based-concurrency-api-for-scala/)
