@@ -14,21 +14,21 @@ final class VirtualFutureTest extends AsyncFunSuite with Matchers:
   implicit override val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
   test("zip") {
-    Future { count("./data/data.a.csv") } zip
-    Future { count("./data/data.b.csv") } map
+    Future { countLines("./data/data.a.csv") } zip
+    Future { countLines("./data/data.b.csv") } map
     { (aLines, bLines) => aLines + bLines shouldBe expectedLineCount }
   }
 
   test("sequence") {
     for
-      aLines <- Future { count("./data/data.a.csv") }
-      bLines <- Future { count("./data/data.b.csv") }
+      aLines <- Future { countLines("./data/data.a.csv") }
+      bLines <- Future { countLines("./data/data.b.csv") }
     yield aLines + bLines shouldBe expectedLineCount
   }
 
   test("parallel") {
-    val aFuture = Future { count("./data/data.a.csv") }
-    val bFuture = Future { count("./data/data.b.csv") }
+    val aFuture = Future { countLines("./data/data.a.csv") }
+    val bFuture = Future { countLines("./data/data.b.csv") }
     for
       aLines <- aFuture
       bLines <- bFuture
@@ -36,8 +36,8 @@ final class VirtualFutureTest extends AsyncFunSuite with Matchers:
   }
 
   test("recover") {
-    Future { count("./data/data.a.csv") } zip
-    Future { count("./data/wrong.name.csv") } map
+    Future { countLines("./data/data.a.csv") } zip
+    Future { countLines("./data/wrong.name.csv") } map
     { (aLines, bLines) => aLines + bLines shouldBe expectedLineCount } recover
     { case _ => -1  } map { result => result shouldBe -1 }
   }
@@ -45,8 +45,8 @@ final class VirtualFutureTest extends AsyncFunSuite with Matchers:
   test("recover > for") {
     val result = (
       for
-        aLines <- Future { count("./data/data.a.csv") }
-        bLines <- Future { count("./data/wrong.name.csv") }
+        aLines <- Future { countLines("./data/data.a.csv") }
+        bLines <- Future { countLines("./data/wrong.name.csv") }
       yield aLines + bLines shouldBe expectedLineCount
     ).recover { case _ => -1 }
     result map { result => result shouldBe -1 }
