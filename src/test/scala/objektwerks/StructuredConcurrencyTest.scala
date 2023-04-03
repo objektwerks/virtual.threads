@@ -8,7 +8,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import scala.jdk.CollectionConverters.*
 import scala.util.{Failure, Success, Using}
 
-import objektwerks.FileLineCountTask.*
+import FileLineCountTask.*
 
 final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join") {
