@@ -28,7 +28,7 @@ class OxTest extends AnyFunSuite with Matchers:
       }
       alines.join().join()
     }
-    // expectedLineCount of 540_959 is not received, with alines counted
-    // and blines not being counted. Why?
+    // expectedLineCount of 540_959 is not received, with alines
+    // being counted yet blines not being counted! Why?
     lineCount shouldBe 270_397
   }
