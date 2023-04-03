@@ -50,8 +50,8 @@ class OxTest extends AnyFunSuite with Matchers:
   }
 
   test("channel") {
-    val channel = Channel[Int]()
     scoped {
+      val channel = Channel[Int]()
       fork {
         channel.send(1)
         channel.send(2)
