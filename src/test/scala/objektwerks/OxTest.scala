@@ -88,8 +88,8 @@ class OxTest extends AnyFunSuite with Matchers:
     scoped {
       val channel = Channel[Int]()
       fork {
-        channel.send(2)
-        channel.send(4)
+        channel.send(6)
+        channel.send(8)
         channel.done()
       }
       channel
