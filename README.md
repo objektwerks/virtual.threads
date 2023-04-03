@@ -2,7 +2,7 @@ Virtual Threads
 ---------------
 >JDK 20 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
 
->Software Mill Ox library feature tests included as well.
+>Software Mill Ox library feature tests are included as well.
 
 JDK 20
 ------
