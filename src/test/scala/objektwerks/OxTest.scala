@@ -16,3 +16,19 @@ class OxTest extends AnyFunSuite with Matchers:
     }
     lineCount shouldBe expectedLineCount
   }
+
+  test("nested fork") {
+    val lineCount = scoped {
+      val alines: Fork[Fork[Int]] = fork {
+        val blines: Fork[Int] = fork {
+          countLines("./data/data.b.csv")
+        }
+        countLines("./data/data.a.csv")
+        blines
+      }
+      alines.join().join()
+    }
+    // expectedLineCount of 540_959 is not received, with alines counted
+    // and blines not being counted. Why?
+    lineCount shouldBe 270_397
+  }
