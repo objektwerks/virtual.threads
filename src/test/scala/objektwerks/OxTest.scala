@@ -1,5 +1,7 @@
 package objektwerks
 
+import java.util.UUID
+
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
@@ -31,4 +33,17 @@ class OxTest extends AnyFunSuite with Matchers:
     // expectedLineCount of 540_959 is not received, with alines
     // being counted yet blines not being counted! Why?
     lineCount shouldBe 270_397
+  }
+
+  test("scoped value") {
+    val license = ForkLocal("")
+    val uuid = UUID.randomUUID.toString
+    val count = scoped {
+      forkHold {
+        license.scopedWhere(uuid) {
+          if license.get().nonEmpty then 1 else -1
+        }
+      }
+    }.join()
+    count shouldBe 1
   }
