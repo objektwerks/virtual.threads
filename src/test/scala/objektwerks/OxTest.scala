@@ -78,6 +78,22 @@ class OxTest extends AnyFunSuite with Matchers:
         channel.send(4)
         channel.done()
       }
-      channel.map(i => i * i).foreach(i => println(s"*** channel squared: $i by ${Math.sqrt(i).toInt}"))
+      channel
+        .map(i => i * i)
+        .foreach(i => println(s"*** channel map squared: $i by ${Math.sqrt(i).toInt}"))
+    }
+  }
+
+  test("channel > transform") {
+    scoped {
+      val channel = Channel[Int]()
+      fork {
+        channel.send(2)
+        channel.send(4)
+        channel.done()
+      }
+      channel
+        .transform(_.filter(i => i % 2 == 0).map(i => i * i))
+        .foreach(i => println(s"*** channel transform squared: $i by ${Math.sqrt(i).toInt}"))
     }
   }
