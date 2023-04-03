@@ -80,7 +80,7 @@ class OxTest extends AnyFunSuite with Matchers:
       }
       channel
         .map(i => i * i)
-        .foreach(i => println(s"*** channel map squared: $i by ${Math.sqrt(i).toInt}"))
+        .foreach(i => println(s"*** channel map squared $i by ${Math.sqrt(i).toInt}"))
     }
   }
 
@@ -94,6 +94,6 @@ class OxTest extends AnyFunSuite with Matchers:
       }
       channel
         .transform(_.filter(i => i % 2 == 0).map(i => i * i))
-        .foreach(i => println(s"*** channel transform squared: $i by ${Math.sqrt(i).toInt}"))
+        .foreach(i => println(s"*** channel transform squared $i by ${Math.sqrt(i).toInt}"))
     }
   }
