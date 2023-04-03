@@ -5,6 +5,7 @@ import java.util.UUID
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import ox.channels.*
 import ox.Ox.*
 
 import FileLineCountTask.*
@@ -46,4 +47,25 @@ class OxTest extends AnyFunSuite with Matchers:
       }
     }.join()
     count shouldBe 1
+  }
+
+  test("channel") {
+    val channel = Channel[String]()
+    scoped {
+      fork {
+        channel.send("Hello")
+        channel.send("World")
+        channel.done()
+      }
+
+      val unit = fork {
+        foreverWhile {
+          channel.receive() match
+            case Left(e: ChannelState.Error) => println("*** channel state error"); false
+            case Left(ChannelState.Done)     => println("*** channel state done"); false
+            case Right(value)                => println(s"*** channel value: $value"); true
+        }
+      }
+      unit.join()
+    }
   }
