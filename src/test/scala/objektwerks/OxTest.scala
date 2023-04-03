@@ -61,8 +61,8 @@ class OxTest extends AnyFunSuite with Matchers:
       val unit = fork {
         foreverWhile {
           channel.receive() match
-            case Left(error: ChannelState.Error) => println(s"*** channel state error: ${error.reason.get}"); false
-            case Left(ChannelState.Done)         => println("*** channel state done"); false
+            case Left(error: ChannelState.Error) => println(s"*** channel error: ${error.reason.get}"); false
+            case Left(ChannelState.Done)         => println("*** channel done"); false
             case Right(value)                    => println(s"*** channel value: $value"); true
         }
       }
