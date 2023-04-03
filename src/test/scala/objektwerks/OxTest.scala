@@ -9,10 +9,10 @@ import FileLineCountTask.*
 
 class OxTest extends AnyFunSuite with Matchers:
   test("scoped") {
-    val count = scoped {
-      val alines: Fork[Int] = fork( FileLineCountTask.count("./data/data.a.csv") )
-      val blines: Fork[Int] = fork( FileLineCountTask.count("./data/data.b.csv") )
+    val lineCount = scoped {
+      val alines: Fork[Int] = fork( count("./data/data.a.csv") )
+      val blines: Fork[Int] = fork( count("./data/data.b.csv") )
       alines.join() + blines.join()
     }
-    count shouldBe expectedLineCount
+    lineCount shouldBe expectedLineCount
   }
