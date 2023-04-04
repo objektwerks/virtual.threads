@@ -8,6 +8,8 @@ import scala.util.Using
 object FileLineCountTask:
   val tasks = List( FileLineCountTask("./data/data.a.csv"), FileLineCountTask("./data/data.b.csv") )
   val expectedLineCount = 540_959
+  val aLineCount = 270_562
+  val bLineCount = 270_397
 
   def countLines(file: String): Int =
     Using(
