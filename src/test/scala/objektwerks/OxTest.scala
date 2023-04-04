@@ -17,7 +17,7 @@ class OxTest extends AnyFunSuite with Matchers:
       alines.join() + blines.join()
     }
     lineCount shouldBe expectedLineCount
-  } // Don't use nested forks!!!
+  } // Don't use nested scopes or forks!
 
   test("scoped value") {
     val license = ForkLocal("")
