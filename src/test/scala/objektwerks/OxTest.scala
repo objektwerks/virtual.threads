@@ -32,29 +32,6 @@ class OxTest extends AnyFunSuite with Matchers:
     count shouldBe 1
   }
 
-  /* Refactor to 0.0.6!
-  test("channel") {
-    scoped {
-      val channel = Channel[Int]()
-      fork {
-        channel.send(1)
-        channel.send(2)
-        channel.done()
-      }
-
-      val unit = fork {
-        foreverWhile {
-          channel.receive() match
-            case Left(error: ChannelState.Error) => println(s"*** channel error: ${error.reason.get}"); false
-            case Left(ChannelState.Done)         => println("*** channel done"); false
-            case Right(value)                    => println(s"*** channel value: $value"); true
-        }
-      }
-      unit.join()
-    }
-  }
-  */
-
   test("channel > map") {
     scoped {
       val channel = Channel[Int]()
