@@ -5,7 +5,6 @@ import jdk.incubator.concurrent.StructuredTaskScope
 
 import org.scalatest.funsuite.AnyFunSuite
 
-import scala.jdk.CollectionConverters.*
 import scala.util.{Failure, Success, Using}
 
 import FileLineCountTask.*
