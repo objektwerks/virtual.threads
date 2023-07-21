@@ -23,5 +23,6 @@ Resources
 6. [Ultimate Guide to Virtual Threads](https://blog.rockthejvm.com/ultimate-guide-to-java-virtual-threads/)
 7. [Software Mill Ox](https://softwaremill.com/prototype-loom-based-concurrency-api-for-scala/)
 8. [Software Mill Go Channels in Scala](https://softwaremill.com/go-like-channels-using-project-loom-and-scala/)
-9. [What is blocking in Loom?](https://softwaremill.com/what-is-blocking-in-loom/)
-10. [Odersky: Async](https://github.com/lampepfl/async/)
+9. [Software Mill More On Go Channels in Scala](https://softwaremill.com/go-like-channels-in-scala-receive-send-and-default-clauses/)
+10. [What is blocking in Loom?](https://softwaremill.com/what-is-blocking-in-loom/)
+11. [Odersky: Async](https://github.com/lampepfl/async/)
