@@ -23,7 +23,7 @@ class OxTest extends AnyFunSuite with Matchers:
     val license = ForkLocal("")
     val uuid = UUID.randomUUID.toString
     val count = scoped {
-      forkHold {
+      fork {
         license.scopedWhere(uuid) {
           if license.get().nonEmpty then 1 else -1
         }
