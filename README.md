@@ -26,3 +26,4 @@ Resources
 9. [Software Mill More On Go Channels in Scala](https://softwaremill.com/go-like-channels-in-scala-receive-send-and-default-clauses/)
 10. [What is blocking in Loom?](https://softwaremill.com/what-is-blocking-in-loom/)
 11. [Odersky: Async](https://github.com/lampepfl/async/)
+12. [Virtual Threads Design](https://blogs.oracle.com/javamagazine/post/java-virtual-threads)
