@@ -27,3 +27,4 @@ Resources
 10. [What is blocking in Loom?](https://softwaremill.com/what-is-blocking-in-loom/)
 11. [Odersky: Async](https://github.com/lampepfl/async/)
 12. [Virtual Threads Design](https://blogs.oracle.com/javamagazine/post/java-virtual-threads)
+13. [Software Mill Ox: Supervision, Kafka and Java 21](https://softwaremill.com/supervision-kafka-and-java-21-whats-new-in-ox/)
