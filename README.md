@@ -28,3 +28,4 @@ Resources
 11. [Odersky: Async](https://github.com/lampepfl/async/)
 12. [Virtual Threads Design](https://blogs.oracle.com/javamagazine/post/java-virtual-threads)
 13. [Software Mill Ox: Supervision, Kafka and Java 21](https://softwaremill.com/supervision-kafka-and-java-21-whats-new-in-ox/)
+14. [Java 21 Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
