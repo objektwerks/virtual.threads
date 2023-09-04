@@ -4,7 +4,7 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "3.3.1-RC7"
 libraryDependencies ++= {
   Seq(
-    "com.softwaremill.ox" %% "core" % "0.0.11", // 0.0.12 seriously breaks OxTest!
+    "com.softwaremill.ox" %% "core" % "0.0.11", // 0.0.12 seriously breaks OxTest! Only works with JDK 21 and Scala nightly build!
     "org.scalatest" %% "scalatest" % "3.2.16" % Test
   )
 }
