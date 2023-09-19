@@ -11,7 +11,7 @@ import ox.channels.*
 import FileLineCountTask.*
 
 class OxTest extends AnyFunSuite with Matchers:
-  test("scoped") {
+  test("scoped > fork") {
     val lineCount = scoped {
       val alines: Fork[Int] = fork( countLines("./data/data.a.csv") )
       val blines: Fork[Int] = fork( countLines("./data/data.b.csv") )
@@ -20,7 +20,7 @@ class OxTest extends AnyFunSuite with Matchers:
     lineCount shouldBe expectedLineCount
   }
 
-  test("scoped value") {
+  test("scoped > fork > scoped value") {
     val license = ForkLocal("")
     val uuid = UUID.randomUUID.toString
     val count = scoped {
@@ -33,7 +33,7 @@ class OxTest extends AnyFunSuite with Matchers:
     count shouldBe 1
   }
 
-  test("supervised") {
+  test("supervised > fork") {
     val lineCount = supervised {
       val alines: Fork[Int] = fork( countLines("./data/data.a.csv") )
       val blines: Fork[Int] = fork( countLines("./data/data.b.csv") )
@@ -42,7 +42,7 @@ class OxTest extends AnyFunSuite with Matchers:
     lineCount shouldBe expectedLineCount
   }
 
-  test("channel > map") {
+  test("scoped > fork > channel > map") {
     scoped {
       val channel = Channel[Int]()
       fork {
@@ -56,8 +56,8 @@ class OxTest extends AnyFunSuite with Matchers:
     }
   }
 
-  test("channel > transform") {
-    scoped {
+  test("supervised > fork> channel > transform") {
+    supervised {
       val channel = Channel[Int]()
       fork {
         channel.send(6)
