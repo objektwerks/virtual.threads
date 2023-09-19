@@ -1,6 +1,5 @@
 package objektwerks
 
-import jdk.incubator.concurrent.ScopedValue
 import java.util.UUID
 
 import org.scalatest.funsuite.AnyFunSuite
