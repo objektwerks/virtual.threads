@@ -56,7 +56,7 @@ class OxTest extends AnyFunSuite with Matchers:
     }
   }
 
-  test("supervised > fork> channel > transform") {
+  test("supervised > fork > channel > transform") {
     supervised {
       val channel = Channel[Int]()
       fork {
