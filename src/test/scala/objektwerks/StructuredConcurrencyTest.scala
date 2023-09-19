@@ -1,7 +1,7 @@
 package objektwerks
 
 import java.time.Instant
-import jdk.incubator.concurrent.StructuredTaskScope
+import java.util.concurrent.StructuredTaskScope
 
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -16,7 +16,7 @@ final class StructuredConcurrencyTest extends AnyFunSuite:
       val bLines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
       scope.join()
       scope.throwIfFailed()
-      aLines.resultNow() + bLines.resultNow()
+      aLines.get() + bLines.get()
     }
     lines match
       case Success(count) => assert(count == expectedLineCount)
@@ -28,7 +28,7 @@ final class StructuredConcurrencyTest extends AnyFunSuite:
       val futures = tasks.map( task => scope.fork( () => task.call() ) )
       scope.joinUntil( Instant.now().plusMillis(3000) )
       scope.throwIfFailed()
-      futures.map( future => future.resultNow() ).sum
+      futures.map( future => future.get() ).sum
     }.fold( error => fail(error.getMessage), lines => assert(lines == expectedLineCount) )
   }
 
