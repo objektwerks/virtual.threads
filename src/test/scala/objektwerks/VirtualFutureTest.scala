@@ -11,7 +11,7 @@ import scala.concurrent.Future
 import FileLineCountTask.*
 
 final class VirtualFutureTest extends AsyncFunSuite with Matchers:
-  implicit override val executionContext: ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
+  given ExecutionContext = ExecutionContext.fromExecutor( Executors.newVirtualThreadPerTaskExecutor() )
 
   test("zip") {
     Future { countLines("./data/data.a.csv") } zip
