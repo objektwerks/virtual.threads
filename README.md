@@ -2,12 +2,7 @@ Virtual Threads
 ---------------
 >JDK 21 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
 
->Software Mill Ox library feature tests are included as well.
-
-JDK 20
-------
->To enable preview features and load modules see .jvmopts, configured
->as: ```"--enable-preview --add-modules jdk.incubator.concurrent"```
+>A feature test for the Software Mill **Ox** library is included as well.
 
 Test
 ----
