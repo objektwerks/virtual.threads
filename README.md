@@ -18,3 +18,4 @@ Resources
 * [Odersky: Async](https://github.com/lampepfl/async/)
 * [Virtual Threads Design](https://blogs.oracle.com/javamagazine/post/java-virtual-threads)
 * [Java 21 Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
+* [Java 21 Concurrency Guide](https://docs.oracle.com/en/java/javase/21/core/concurrency.html#GUID-59C16A2D-57CE-4C83-9D6F-91A48E01E3C6)
