@@ -5,8 +5,8 @@ import java.util.UUID
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class ScopedValuesTest extends AnyFunSuite with Matchers:
-  test("scoped values") {
+final class ScopedValuesTest extends AnyFunSuite with Matchers:
+  test("scoped values"):
     val license: ScopedValue[String] = ScopedValue.newInstance()
     val uuid = UUID.randomUUID.toString
     val count = ScopedValue
@@ -14,4 +14,3 @@ class ScopedValuesTest extends AnyFunSuite with Matchers:
       .call { () => if license.get.nonEmpty then 1 else -1 }
     assert(count == 1)
     assert(!license.isBound)
-  }
