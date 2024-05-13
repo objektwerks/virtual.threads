@@ -1,6 +1,6 @@
 Virtual Threads
 ---------------
->JDK 21 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
+>JDK 22 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
 
 Test
 ----
