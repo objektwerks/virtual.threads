@@ -4,7 +4,7 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "3.5.0-RC2"
 libraryDependencies ++= {
   Seq(
-    "org.scalatest" %% "scalatest" % "3.2.18" % Test
+    "org.scalatest" %% "scalatest" % "3.2.19" % Test
   )
 }
 scalacOptions ++= Seq(
