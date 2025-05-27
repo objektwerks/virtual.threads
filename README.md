@@ -1,6 +1,6 @@
 Virtual Threads
 ---------------
->JDK 23 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
+>JDK 24 virtual threads, scoped values and structured concurrency feature tests using Scala 3.
 
 Test
 ----
