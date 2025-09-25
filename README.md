@@ -18,3 +18,4 @@ Resources
 * [Virtual Threads Design](https://blogs.oracle.com/javamagazine/post/java-virtual-threads)
 * [Ultimate Guide to Virtual Threads](https://blog.rockthejvm.com/ultimate-guide-to-java-virtual-threads/)
 * [Odersky on Async](https://github.com/lampepfl/async/)
+* [Critique of JEP 505](https://softwaremill.com/critique-of-jep-505-structured-concurrency-fifth-preview/)
