@@ -11,11 +11,10 @@ import FileLineCountTask.*
 
 final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join"):
-    val lines = Using( StructuredTaskScope.ShutdownOnFailure() ) { scope =>
+    val lines = Using( StructuredTaskScope.open() ) { scope =>
       val aLines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
       val bLines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
       scope.join()
-      scope.throwIfFailed()
       aLines.get() + bLines.get()
     }
     lines match
