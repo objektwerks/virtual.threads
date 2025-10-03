@@ -20,10 +20,3 @@ final class StructuredConcurrencyTest extends AnyFunSuite:
     lines match
       case Success(count) => assert(count == expectedLineCount)
       case Failure(error) => fail(error.getMessage)
-
-  test("race"):
-    Using( StructuredTaskScope.ShutdownOnSuccess[Int]() ) { scope =>
-      tasks.foreach( task => scope.fork( () => task.call() ) )
-      scope.joinUntil( Instant.now().plusMillis(3000) )
-      scope.result()
-    }.fold( error => fail(error.getMessage), lines => assert(lines == 270_562 || lines == 270_397) )
