@@ -6,8 +6,6 @@ import org.scalatest.funsuite.AnyFunSuite
 
 import scala.util.{Failure, Success, Using}
 
-import FileLineCountTask.*
-
 final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join"):
     val lines = Using( StructuredTaskScope.open[Int]() ) { scope =>
@@ -17,5 +15,5 @@ final class StructuredConcurrencyTest extends AnyFunSuite:
       aLines.get() + bLines.get()
     }
     lines match
-      case Success(count) => assert(count == expectedLineCount)
+      case Success(count) => assert(count == FileLineCountTask.expectedLineCount)
       case Failure(error) => fail(error.getMessage)
