@@ -1,6 +1,5 @@
 package objektwerks
 
-import java.time.Instant
 import java.util.concurrent.StructuredTaskScope
 
 import org.scalatest.funsuite.AnyFunSuite
@@ -11,7 +10,7 @@ import FileLineCountTask.*
 
 final class StructuredConcurrencyTest extends AnyFunSuite:
   test("join"):
-    val lines = Using( StructuredTaskScope.open() ) { scope =>
+    val lines = Using( StructuredTaskScope.open[Int]() ) { scope =>
       val aLines = scope.fork( () => FileLineCountTask("./data/data.a.csv").call() )
       val bLines = scope.fork( () => FileLineCountTask("./data/data.b.csv").call() )
       scope.join()
